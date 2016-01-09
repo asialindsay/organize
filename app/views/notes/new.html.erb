@@ -1,0 +1,7 @@
+<%= form_for @note, url: {action: "create"}, html: {class: "nifty_form"} do |f| %>
+  <p><%= f.label(:title) %>
+  <%= f.text_field(:title) %></p>
+  <p><%= f.label(:text) %>
+  <%= f.text_field(:text) %></p>
+  <p><%= submit_tag("Create note") %></p>
+<% end %>

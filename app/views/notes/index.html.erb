@@ -1,0 +1,5 @@
+<% @notes.each do |note| %>
+
+<%= note.title %>
+<%= link_to note.user.name, User.find(note.user.id) %>
+<% end %>
