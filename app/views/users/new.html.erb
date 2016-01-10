@@ -1,5 +1,6 @@
-<%= form_for @user, url: {action: "create"}, html: {class: "nifty_form"} do |f| %>
+<%= form_for @user do |f| %>
   <p><%= f.label(:name) %>
   <%= f.text_field(:name) %></p>
-  <p><%= submit_tag("Create user") %></p>
+  <p><%= submit_tag("Create user") %>
+  <%= submit_tag("Update user") %></p>
 <% end %>

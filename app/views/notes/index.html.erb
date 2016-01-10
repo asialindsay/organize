@@ -1,5 +1,6 @@
 <% @notes.each do |note| %>
-
-<%= note.title %>
-<%= link_to note.user.name, User.find(note.user.id) %>
+  <p><%= note.title %>
+  <%= note.text %>
+  <%= link_to note.user.name, User.find(note.user.id) %></p>
 <% end %>
+<p><%= link_to("Add new note", {:action => 'new'}, :class => 'action new') %></p>

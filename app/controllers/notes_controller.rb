@@ -1,3 +1,4 @@
+
 class NotesController < ApplicationController
 
   def index
@@ -13,12 +14,23 @@ class NotesController < ApplicationController
   end
 
   def create
-    # @note = Note.create(note_params)
-    # redirect_to @note
+    # Instantiate new
+    @note = Note.new(note_params)
+    @user = User.find_or_create_by(name: params[:note][:user])
+    @user.notes << @note
+    @note.user = @user
+    #save it
+    # if save succeeds, redirect to the index action
+    if @note.save
+      redirect_to(:action => 'index')
+    # if save fails, redisplay the form
+    else
+      render('new')
+    end
   end
 
   def edit
-    # @note = Note.find(params[:id])
+    @note = Note.find(params[:id])
   end
 
   def update
@@ -29,5 +41,13 @@ class NotesController < ApplicationController
     #   render ('edit')
     # end
   end
-    #do I need private stuff here?
+
+  private
+
+  def note_params
+    #same as using "params[:subject]" except that it:
+    # - raises an error is :note isn't present
+    # - allows listed attributes to be mass-assigned
+    params.require(:note).permit(:title, :text)
+  end
 end
