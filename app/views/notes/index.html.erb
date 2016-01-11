@@ -1,6 +1,11 @@
+<div class="notes index">
+  <h2>Notes</h2>
+
 <% @notes.each do |note| %>
-  <p><%= note.title %>
-  <%= note.text %>
-  <%= link_to note.user.name, User.find(note.user.id) %></p>
-<% end %>
+  <h3><p><%= note.title %>
+  <%= note.text %></p></h3>
+  <h3><p><%= link_to note.user.name, User.find(note.user.id) %></p></h3>
+
 <p><%= link_to("Add new note", {:action => 'new'}, :class => 'action new') %></p>
+<p><%= link_to "Delete", note_path(note), method: :delete, data: {confirm: 'Are you sure you want to delete this note?'} %></p>
+<% end %>

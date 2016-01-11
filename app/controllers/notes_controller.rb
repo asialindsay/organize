@@ -1,4 +1,3 @@
-
 class NotesController < ApplicationController
 
   def index
@@ -6,7 +5,7 @@ class NotesController < ApplicationController
   end
 
   def show
-    # @note = Note.find(params[:id])
+    @note = Note.find(params[:id])
   end
 
   def new
@@ -40,6 +39,11 @@ class NotesController < ApplicationController
     # else
     #   render ('edit')
     # end
+  end
+
+  def destroy
+    note = Note.find(params[:id]).destroy
+    redirect_to(:action => 'index')
   end
 
   private

@@ -1,0 +1,17 @@
+<%= link_to("<< Back to list", {:action => 'index'}, :class => 'back-link') %>
+
+<div class="delete">
+    <h2>Delete note</h2>
+
+    <%= form_for(:note, :url => {:action => 'destroy', :id => @note.id}) do |f| %>
+
+    <p>Are you sure you want to delete this note?</p>
+
+    <p><h4 class="reference-name"><%= @note.title %></h4></p>
+    <p class="reference-name"><%= @note.text %></p>
+
+    <div class="form-buttons">
+      <%= submit_tag("Delete note") %>
+    </div>
+  <% end %>
+</div>

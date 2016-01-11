@@ -1,0 +1,8 @@
+<div class="user index">
+  <h2>Users</h2>
+
+<% @users.each do |user| %>
+  <h3><p><%= link_to user.name, user_path(user.id) %></p></h3>
+  <p><%= link_to("Add new user", {:action => 'new'}, :class => 'action new') %></p>
+  <p><%= link_to "Delete", user_path(user), method: :delete, data: {confirm: 'Are you sure you want to delete this user?'} %></p>
+<% end %>

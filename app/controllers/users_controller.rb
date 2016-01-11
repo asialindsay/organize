@@ -1,5 +1,9 @@
 class UsersController < ApplicationController
 
+  def index
+    @users = User.all
+  end
+
   def show
     @user = User.find(params[:id])
   end
@@ -24,6 +28,11 @@ class UsersController < ApplicationController
     # else
     #   render ('edit')
     # end
+  end
+
+  def destroy
+    user = User.find(params[:id]).destroy
+    redirect_to(:action => 'index')
   end
 
   # do I need to do private stuff here?
